@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Assessment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_internet_connection">Internet connection failed. Please check your internet connection and try again</string>
+    <string name="lan_en">English</string>
+    <string name="lan_ar">Arabic</string>
+
+    <string name="developer_name">Mahmood</string>
+    <string name="tagline">Android Developer</string>
+    <string name="content_dic">image</string>
+    <string name="text">Developed code should be pushed to GitHub with a clear README.md explaining how to build and run the code</string>
+
+</resources>

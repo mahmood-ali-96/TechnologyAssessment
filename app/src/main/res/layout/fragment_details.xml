@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="resulte"
+            type="com.example.technologyassessment.data.network.response.Results" />
+        <variable
+            name="url"
+            type="String" />
+        <variable
+            name="copy"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_5dp"
+        tools:context=".ui.details.DetailsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/project_item_constraint_layout">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintWidth_percent="0.3"
+                app:LoadArticalImageDetails="@{url}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/content_dic" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/TextTitle"
+                android:text="@{resulte.title}"
+                android:layout_marginStart="@dimen/margin_5dp"
+                tools:text="@string/text"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/source"/>
+
+            <TextView
+                android:id="@+id/source"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:text="@{resulte.source}"
+                style="@style/TextDec"
+                android:layout_marginStart="@dimen/margin_5dp"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintBottom_toTopOf="@id/icon_date"/>
+
+            <ImageView
+                android:id="@+id/icon_date"
+                android:layout_width="@dimen/image_view_size"
+                android:layout_height="@dimen/image_view_size"
+                android:src="@drawable/ic_calender"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:layout_marginStart="@dimen/margin_5dp"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toBottomOf="@id/source"
+                app:layout_constraintBottom_toTopOf="@id/icon_update"
+                app:layout_constraintEnd_toStartOf="@id/txt_date"
+                android:contentDescription="@string/content_dic" />
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/TextDec"
+                android:text="@{resulte.published_date}"
+                app:layout_constraintStart_toEndOf="@id/icon_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/icon_date"
+                app:layout_constraintBottom_toBottomOf="@id/icon_date"/>
+
+            <ImageView
+                android:id="@+id/icon_update"
+                android:layout_width="@dimen/image_view_size"
+                android:layout_height="@dimen/image_view_size"
+                android:src="@drawable/ic_calender"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:layout_marginStart="@dimen/margin_5dp"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toBottomOf="@id/icon_date"
+                app:layout_constraintEnd_toStartOf="@id/txt_update"
+                android:contentDescription="@string/content_dic" />
+
+            <TextView
+                android:id="@+id/txt_update"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/TextDec"
+                android:text="@{resulte.updated}"
+                app:layout_constraintStart_toEndOf="@id/icon_update"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/icon_update"
+                app:layout_constraintBottom_toBottomOf="@id/icon_update"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_10dp">
+
+            <TextView
+                android:id="@+id/by_line"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{resulte.byline}"
+                style="@style/CopyRigth"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/m_abstract"/>
+
+            <TextView
+                android:id="@+id/m_abstract"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{resulte._abstract}"
+                android:layout_marginTop="@dimen/margin_5dp"
+                tools:text="@string/text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/by_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/adx_keywords"/>
+
+            <TextView
+                android:id="@+id/adx_keywords"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{resulte.adx_keywords}"
+                android:layout_marginTop="@dimen/margin_5dp"
+                tools:text="@string/text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/m_abstract"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/copy_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{copy}"
+                android:layout_marginTop="@dimen/margin_5dp"
+                tools:text="@string/text"
+                style="@style/CopyRigth"
+                app:layout_constraintTop_toBottomOf="@id/adx_keywords"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>

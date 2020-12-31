@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="resulte"
+            type="com.example.technologyassessment.data.network.response.Results" />
+        <variable
+            name="url"
+            type="String" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/artical_card"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardElevation="@dimen/cardelevation"
+        app:cardMaxElevation="@dimen/cardmaxelevation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/project_item_constraint_layout">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.6"
+                app:layout_constraintWidth_percent="0.2"
+                app:LoadArticalImage="@{url}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/content_dic" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="@integer/max_lines_2"
+                style="@style/TextTitle"
+                android:text="@{resulte.title}"
+                tools:text="@string/text"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/icon_details"
+                app:layout_constraintBottom_toTopOf="@id/m_abstract"/>
+
+            <ImageView
+                android:id="@+id/icon_details"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/image_view_size"
+                app:layout_constraintWidth_percent="0.1"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintStart_toEndOf="@id/title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/content_dic" />
+
+            <TextView
+                android:id="@+id/m_abstract"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{resulte._abstract}"
+                tools:text="@string/text"
+                style="@style/TextDec"
+                android:layout_marginTop="@dimen/margin_5dp"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintEnd_toEndOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintBottom_toBottomOf="@id/barrier"/>
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="m_abstract"/>
+
+            <TextView
+                android:id="@+id/source"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:text="@{resulte.source}"
+                style="@style/TextDec"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toTopOf="@id/barrier"
+                app:layout_constraintEnd_toStartOf="@id/icon_date"/>
+
+            <ImageView
+                android:id="@+id/icon_date"
+                android:layout_width="@dimen/image_view_size"
+                android:layout_height="@dimen/image_view_size"
+                android:src="@drawable/ic_calender"
+                app:layout_constraintStart_toEndOf="@id/source"
+                app:layout_constraintTop_toTopOf="@id/date"
+                app:layout_constraintEnd_toStartOf="@id/date"
+                android:layout_marginStart="@dimen/margin_5dp"
+                app:layout_constraintBottom_toBottomOf="@id/date"
+                android:contentDescription="@string/content_dic" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:text="@{resulte.published_date}"
+                style="@style/TextDec"
+                app:layout_constraintStart_toEndOf="@id/icon_date"
+                app:layout_constraintTop_toTopOf="@id/barrier"
+                app:layout_constraintEnd_toEndOf="@id/title"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
